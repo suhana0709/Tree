@@ -1,0 +1,25 @@
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+        
+def sum_tree_recursive(root):
+    if root is None:
+        return 0
+    return sum_tree_recursive(root.left) + sum_tree_recursive(root.right) + root.data
+    
+#Binary Tree construction
+root = Node(4)
+
+root.left = Node(6)
+root.right = Node(8)
+
+root.left.right = Node(9)
+root.left.left = Node(11)
+root.right.right = Node(13)
+root.right.left = Node(16)
+
+#driver code
+sum_tree = sum_tree_recursive(root)
+print("Sum of all Nodes: ", sum_tree)
