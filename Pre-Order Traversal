@@ -1,0 +1,33 @@
+#pre-order traversal
+# root ---> left -----> right
+
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+        
+def pre_order_traversal(root):
+    if root:
+        #root
+        print(root.val, end=' ')
+        #left
+        pre_order_traversal(root.left)
+        #right
+        pre_order_traversal(root.right)
+    
+#Constructing the binary tree
+a = Node(1)
+
+a.left = Node(2)
+a.right = Node(3)
+
+a.left.left = Node(4)
+a.left.right = Node(5)
+
+a.right.left = Node(6)
+a.right.right = Node(7)
+
+#Driver Code
+print("Pre-Order Traversal:- ")
+pre_order_traversal(a)
