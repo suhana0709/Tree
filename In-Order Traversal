@@ -1,0 +1,35 @@
+#in-order traversal   
+#  left ---> root ----> right
+
+class Node:
+    def __init__(self, key):
+        self.right = None
+        self.left = None
+        self.key = key
+
+def in_order_traversal(root):
+    #recursively performs in-order traversal in the binaary tree
+    if root:
+        #starting from left
+        in_order_traversal(root.left)
+        #root
+        print(root.key, end=' ')
+        #right
+        in_order_traversal(root.right)
+        
+#Constructing the binary tree
+a = Node(1)
+
+a.left = Node(2)
+a.right = Node(3)
+
+a.left.left = Node(4)
+a.left.right = Node(5)
+
+a.right.left = Node(6)
+a.right.right = Node(7)
+
+
+#Driver Code
+print("In-order traversal:-")
+in_order_traversal(a)
