@@ -1,0 +1,35 @@
+class Node:
+    def __init__(self, data):
+        self.val = data
+        self.left = None
+        self.right = None
+
+def traverse(root, tilt):
+    if (not root):
+        return 0
+        
+    left = traverse(root.left, tilt)
+    right = traverse(root.right, tilt)
+    
+    tilt[0] += abs(left - right)    #a list to store and add the values
+    
+    return left + right + root.val
+    
+def Tilt(root):
+    tilt = [0] #list creation
+    traverse(root, tilt)
+    return tilt[0]
+    
+    
+#tree construction
+a = Node(10)
+a.left = Node(20)
+a.right = Node(30)
+a.left.left = Node(40)
+a.left.left.left = Node(60)
+a.right.right = Node(40)
+
+
+# driver code
+b = Tilt(a)
+print("Tilt of the whole tree: ",b)
