@@ -1,0 +1,52 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+# main function ---> prints all the nodes at k level down
+def printKLevelsDown(node, k):
+    if node is None or k<0:
+        return 0
+    if k==0:
+        print(node.data)
+        return
+    
+    # printing all the nodes from left to right (using pre_order function)
+    # k-1 (index)
+    
+    printKLevelsDown(node.left, k-1)
+    printKLevelsDown(node.right, k-1)
+    
+    
+#            10          <----- level 0
+#           /  \
+#         20    30       <----- level 1
+#        /  \     \
+#      40    50    60    <----- level 2
+#     /
+#    70                  <----- level 3
+
+
+#Constructing node
+a = Node(10)
+
+a.left = Node(20)
+a.right = Node(30)
+
+a.left.left = Node(40)
+a.left.right = Node(50)
+
+a.right.right = Node(60)
+
+a.left.left.left = Node(70)
+
+
+#Driver code
+k_val = int(input("Enter the number (of k levels)\n*form 0 to 3: "))
+if k_val>3:
+    print("No level above 3 exists.")
+if k_val<0:
+    print("From 0 to 3 !!!!!!!!!!!!!!!!")
+    
+printKLevelsDown(a, k_val)
