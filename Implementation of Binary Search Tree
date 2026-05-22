@@ -1,0 +1,53 @@
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.right = None
+        self.left = None
+        
+def newNode(item):
+    temp = Node(item)
+    temp.key = item
+    temp.right = temp.left = None
+    return temp
+    
+def insert(node, key):
+    if node is None:
+        return newNode(key)
+    #Otherwise, recur down the tree
+    if key < node.key:
+        node.left = insert(node.left, key)
+    elif key > node.key:
+        node.right = insert(node.right, key)
+    #return the node pointer
+    return node
+    
+#function to do in-order-traversal of BST (Binary Search Tree)
+def in_order_traversal(root):
+    if root is not None:
+        in_order_traversal(root.left)
+        print(root.key, end = ' ')
+        in_order_traversal(root.right)
+        
+        
+        
+#Driver code
+
+#creating the following BST
+#                    50
+#                  /    \
+#                30      70
+#               /  \    /  \
+#             20   40  60   80
+
+root = None
+#creating binary search tree(BST)
+root = insert(root, 50)
+insert(root, 30)
+insert(root, 20)
+insert(root, 40)
+insert(root, 70)
+insert(root, 60)
+insert(root, 80)
+
+#calling the function
+in_order_traversal(root)
