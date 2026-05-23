@@ -1,0 +1,39 @@
+class Node:
+    def __init__(self, key):
+        self.right = None
+        self.left = None
+        self.val = key
+        
+def insert(root, key):
+    if root is None:
+        return Node(key)
+    else:
+        if root.val == key:
+            return root
+        elif root.val < key:
+            root.right = insert(root.right, key)
+        else:
+            root.left = insert(root.left, key)
+        return root
+    
+def pre_order(root):
+    if root is None:
+        return
+    print(root.val, end=' ')
+    pre_order(root.left)
+    pre_order(root.right)
+    
+#Node construction
+a = Node(20)
+a = insert(a, 15)
+a = insert(a, 12)
+a = insert(a, 17)
+a = insert(a, 16)
+a = insert(a, 30)
+a = insert(a, 25)
+a = insert(a, 40)
+a = insert(a, 21)
+a = insert(a, 42)
+
+#Driver Code
+pre_order(a)
