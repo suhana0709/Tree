@@ -1,0 +1,35 @@
+class Node:
+    def __init__(self, key):
+        self.right = None
+        self.left = None
+        self.val = key
+        
+def insert(root, key):
+    if root is None:
+        return Node(key)
+    else:
+        if root.val == key:
+            return root
+        elif (key < root.val):
+            root.left = insert(root.left, key)
+        else:
+            root.right = insert(root.right, key)
+        return root
+    
+def in_order(root):
+    if root:
+        in_order(root.left)
+        print(root.val, end=" ")
+        in_order(root.right)
+        
+#constructing the node
+a = Node(15)
+a = insert(a,20)
+a = insert(a,10)
+a = insert(a,3)
+a = insert(a,5)
+a = insert(a,40)
+a = insert(a,35)
+a = insert(a,60)
+
+in_order(a)
