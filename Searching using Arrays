@@ -1,0 +1,21 @@
+arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+def search(arr, key):
+    if len(arr)==0:
+        return False
+        
+    mid = len(arr) // 2
+    
+    if key == arr[mid]:
+        return True
+    elif key > arr[mid]:
+        return search(arr[mid+1:], key)
+    else:
+        return search(arr[:mid], key)
+    
+print("Array: ",arr)  
+num = int(input("Enter the number which is to be searched: "))
+if search(arr, num):
+    print(f"{num} found in the array.")
+else:
+    print(f"{num} not found in the array.")
